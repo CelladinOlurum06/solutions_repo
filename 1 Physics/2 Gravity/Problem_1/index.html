@@ -172,6 +172,59 @@
 <div class="document" itemscope="itemscope" itemtype="http://schema.org/Article" role="main">
 <div class="section" itemprop="articleBody">
 <h1 id="problem-1">Problem 1</h1>
+<h1 id="orbital-period-and-orbital-radius">Orbital Period and Orbital Radius</h1>
+<h2 id="1-theoretical-foundation">1. Theoretical Foundation</h2>
+<h3 id="keplers-third-law">Kepler’s Third Law</h3>
+<p>Kepler’s Third Law states that for a body orbiting another in a circular orbit, the square of the orbital period <span class="arithmatex">\( T \)</span> is proportional to the cube of the orbital radius <span class="arithmatex">\( R \)</span>:</p>
+<div class="arithmatex">\[
+T^2 = rac{4\pi^2 R^3}{GM}
+\]</div>
+<p>where:
+- <span class="arithmatex">\( T \)</span> is the orbital period,
+- <span class="arithmatex">\( R \)</span> is the orbital radius,
+- <span class="arithmatex">\( G \)</span> is the gravitational constant,
+- <span class="arithmatex">\( M \)</span> is the mass of the central body.</p>
+<p>Rearranging for <span class="arithmatex">\( T \)</span>:</p>
+<div class="arithmatex">\[
+T = 2\pi \sqrt{\frac{R^3}{GM}}
+\]</div>
+<p>This equation shows that the orbital period increases with the radius.</p>
+<h2 id="2-real-world-implications">2. Real-World Implications</h2>
+<ul>
+<li><strong>Determining planetary masses:</strong> By measuring the period and radius of a moon orbiting a planet, the mass of the planet can be calculated.</li>
+<li><strong>Satellite Orbits:</strong> Engineers use Kepler’s laws to design stable orbits for communication and GPS satellites.</li>
+<li><strong>Exoplanet Discovery:</strong> Astronomers use Kepler’s Third Law to estimate the distance and mass of exoplanets by analyzing their orbital periods.</li>
+</ul>
+<h2 id="3-implementation-in-python">3. Implementation in Python</h2>
+<pre><code class="language-python">import numpy as np
+import matplotlib.pyplot as plt
+
+# Constants
+G = 6.67430e-11  # Gravitational constant (m^3/kg/s^2)
+M = 5.972e24  # Mass of Earth (kg)
+R_values = np.linspace(7e6, 4e8, 100)  # Orbital radii from 7,000 km to 400,000 km
+
+# Calculate orbital periods
+T_values = 2 * np.pi * np.sqrt(R_values**3 / (G * M))
+
+# Plot T^2 vs R^3
+plt.figure(figsize=(8, 5))
+plt.plot(R_values**3, T_values**2, label='$T^2 \propto R^3$', color='b')
+plt.xlabel('$R^3$ (m^3)')
+plt.ylabel('$T^2$ (s^2)')
+plt.title('Kepler’s Third Law: $T^2$ vs $R^3$')
+plt.legend()
+plt.grid()
+plt.show()
+</code></pre>
+<h2 id="4-discussion-on-extensions">4. Discussion on Extensions</h2>
+<ul>
+<li><strong>Elliptical Orbits:</strong> While this derivation assumes circular orbits, Kepler’s Third Law extends to elliptical orbits by using the semi-major axis instead of <span class="arithmatex">\( R \)</span>.</li>
+<li><strong>Gravitational Interactions:</strong> Multi-body systems introduce perturbations that modify orbital periods slightly.</li>
+<li><strong>Relativistic Effects:</strong> At very high masses or velocities, general relativity modifies the gravitational interactions beyond Newtonian predictions.</li>
+</ul>
+<h2 id="5-conclusion">5. Conclusion</h2>
+<p>This analysis confirms Kepler’s Third Law through theoretical derivation and computational modeling. The relationship between <span class="arithmatex">\( T^2 \)</span> and <span class="arithmatex">\( R^3 \)</span> is essential in astronomy, satellite mechanics, and astrophysics, providing a fundamental link between motion and gravity.</p>
 </div>
 </div><footer>
 <div aria-label="Footer Navigation" class="rst-footer-buttons" role="navigation">
