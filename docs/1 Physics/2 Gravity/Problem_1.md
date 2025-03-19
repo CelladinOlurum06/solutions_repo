@@ -7,9 +7,6 @@
 
 Kepler’s Third Law states that for a body orbiting another in a circular orbit, the square of the orbital period \( T \) is proportional to the cube of the orbital radius \( R \):
 
-$$
-T^2 = rac{4\pi^2 R^3}{GM}
-$$
 
 where:
 - \( T \) is the orbital period,
