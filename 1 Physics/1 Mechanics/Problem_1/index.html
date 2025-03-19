@@ -172,7 +172,74 @@
 <div class="document" itemscope="itemscope" itemtype="http://schema.org/Article" role="main">
 <div class="section" itemprop="articleBody">
 <h1 id="problem-1">Problem 1</h1>
-<p>kjdfhdsjhfdksjbfkjsdbfhkdjsbhgjkdsbjksdfhgfdsjk</p>
+<h1 id="investigating-the-range-as-a-function-of-the-angle-of-projection">Investigating the Range as a Function of the Angle of Projection</h1>
+<h2 id="1-theoretical-foundation">1. Theoretical Foundation</h2>
+<h3 id="governing-equations-of-projectile-motion">Governing Equations of Projectile Motion</h3>
+<p>Projectile motion follows Newton's laws under constant acceleration due to gravity. The basic equations for a projectile launched with an initial velocity <span class="arithmatex">\( v_0 \)</span> at an angle <span class="arithmatex">\( \theta \)</span> from the horizontal are:</p>
+<h4 id="equations-of-motion"><strong>Equations of Motion</strong></h4>
+<ul>
+<li><strong>Horizontal motion</strong> (constant velocity):</li>
+</ul>
+<p>$$
+  x(t) = v_0 \cos(\theta) t
+  $$</p>
+<ul>
+<li><strong>Vertical motion</strong> (accelerated motion under gravity):</li>
+</ul>
+<p>$$
+  y(t) = v_0 \sin(\theta) t - \frac{1}{2} g t^2
+  $$</p>
+<h4 id="time-of-flight"><strong>Time of Flight</strong></h4>
+<p>The total time of flight can be found by setting <span class="arithmatex">\( y(t) = 0 \)</span> (when the projectile returns to the ground):</p>
+<p>$$
+  t_f = \frac{2 v_0 \sin(\theta)}{g}
+  $$</p>
+<h4 id="range-of-the-projectile"><strong>Range of the Projectile</strong></h4>
+<p>The horizontal range is given by:</p>
+<p>$$
+  R = v_0 \cos(\theta) \cdot t_f
+  $$</p>
+<p>Substituting <span class="arithmatex">\( t_f \)</span>:</p>
+<p>$$
+  R = \frac{v_0^2 \sin(2\theta)}{g}
+  $$</p>
+<p>This equation shows that the range depends on both the initial velocity and the launch angle.</p>
+<h2 id="2-analysis-of-the-range">2. Analysis of the Range</h2>
+<ul>
+<li>The maximum range occurs when <span class="arithmatex">\( \sin(2\theta) = 1 \)</span>, i.e., at <span class="arithmatex">\( \theta = 45^\circ \)</span>.</li>
+<li>Increasing <span class="arithmatex">\( v_0 \)</span> increases the range quadratically.</li>
+<li>Increasing <span class="arithmatex">\( g \)</span> (e.g., on planets with stronger gravity) decreases the range.</li>
+</ul>
+<h2 id="3-practical-applications">3. Practical Applications</h2>
+<ul>
+<li><strong>Sports</strong>: Optimization of throwing angles in javelin, shot put, and soccer.</li>
+<li><strong>Engineering</strong>: Ballistics and missile trajectory predictions.</li>
+<li><strong>Astrophysics</strong>: Calculations for planetary landings, where gravity varies.</li>
+</ul>
+<h2 id="4-implementation-in-python">4. Implementation in Python</h2>
+<p>```python
+import numpy as np
+import matplotlib.pyplot as plt</p>
+<h1 id="constants">Constants</h1>
+<p>g = 9.81  # gravitational acceleration (m/s^2)
+v0 = 20   # initial velocity (m/s)
+angles = np.linspace(0, 90, 100)  # angles from 0 to 90 degrees</p>
+<h1 id="compute-range-for-each-angle">Compute range for each angle</h1>
+<p>ranges = (v0**2 * np.sin(2 * np.radians(angles))) / g</p>
+<h1 id="find-the-angle-with-the-maximum-range">Find the angle with the maximum range</h1>
+<p>optimal_angle = angles[np.argmax(ranges)]
+max_range = max(ranges)</p>
+<h1 id="plot">Plot</h1>
+<p>plt.figure(figsize=(8, 5))
+plt.plot(angles, ranges, label="Projectile Range")
+plt.axvline(x=optimal_angle, color='r', linestyle="--", label=f"Max Range at {optimal_angle:.1f}°")
+plt.xlabel("Angle of Projection (degrees)")
+plt.ylabel("Range (m)")
+plt.title("Projectile Range vs. Angle of Projection")
+plt.legend()
+plt.grid()
+plt.show()</p>
+<p>print(f"Maximum range of {max_range:.2f} meters occurs at {optimal_angle:.1f} degrees.")</p>
 </div>
 </div><footer>
 <div aria-label="Footer Navigation" class="rst-footer-buttons" role="navigation">
