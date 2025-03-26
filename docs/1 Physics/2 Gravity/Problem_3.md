@@ -1,4 +1,5 @@
-# 🛰️ Problem 3: Trajectories of a Freely Released Payload Near Earth
+#  Problem 3
+# Trajectories of a Freely Released Payload Near Earth
 
 ## 🎯 Motivation
 
