@@ -84,46 +84,33 @@ $$
 \frac{mv^2}{r} = \frac{GMm}{r^2} \Rightarrow v = \sqrt{\frac{GM}{r}} = v_1
 $$
 
----
+## 🌍 Cosmic Velocity Calculations
 
-## 🧮 Python Code: Calculate and Visualize Cosmic Velocities
+To calculate the **first** and **second cosmic velocities**, we use the following physics equations:
 
-import numpy as np
-import matplotlib.pyplot as plt
+- **First Cosmic Velocity** (circular orbit velocity):
 
-# Gravitational constant
-G = 6.67430e-11  # in m^3 kg^-1 s^-2
+$$
+v_1 = \sqrt{\frac{GM}{R}}
+$$
 
-# Celestial bodies: name, mass (kg), radius (m)
-bodies = {
-    'Earth': (5.972e24, 6.371e6),
-    'Mars': (6.417e23, 3.3895e6),
-    'Jupiter': (1.898e27, 6.9911e7)
-}
+- **Second Cosmic Velocity** (escape velocity):
 
-# Compute v1 and v2 for each body
-results = {}
-for body, (mass, radius) in bodies.items():
-    v1 = np.sqrt(G * mass / radius)  # v1 = sqrt(GM / R)
-    v2 = np.sqrt(2) * v1             # v2 = sqrt(2) * v1
-    results[body] = (v1, v2)
+$$
+v_2 = \sqrt{2} \cdot v_1 = \sqrt{\frac{2GM}{R}}
+$$
 
-# Prepare data for visualization
-labels = list(results.keys())
-v1_vals = [results[body][0] for body in labels]
-v2_vals = [results[body][1] for body in labels]
+Where:
 
-x = np.arange(len(labels))
-width = 0.35
+- \( G \) is the universal gravitational constant:  
+  \( G = 6.67430 \times 10^{-11} \, \text{m}^3 \cdot \text{kg}^{-1} \cdot \text{s}^{-2} \)
+- \( M \) is the mass of the celestial body (in kg)
+- \( R \) is the radius of the celestial body (in meters)
 
-# Plotting
-plt.figure(figsize=(10, 6))
-plt.bar(x - width/2, v1_vals, width, label='First Cosmic Velocity ($v_1$)')
-plt.bar(x + width/2, v2_vals, width, label='Second Cosmic Velocity ($v_2$)')
-plt.xticks(x, labels)
-plt.ylabel('Velocity (m/s)')
-plt.title('Cosmic Velocities for Different Celestial Bodies')
-plt.legend()
-plt.grid(True, linestyle='--', alpha=0.5)
-plt.tight_layout()
-plt.show()
+We apply these formulas to the following celestial bodies:
+- 🌍 Earth
+- ♂️ Mars
+- ♃ Jupiter
+
+The resulting velocities are visualized using bar charts to compare the gravitational environments of each planet.
+
