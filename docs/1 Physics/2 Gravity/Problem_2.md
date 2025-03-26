@@ -88,7 +88,7 @@ $$
 
 ## 🧮 Python Code: Calculate and Visualize Cosmic Velocities
 
-```python
+
 import numpy as np
 import matplotlib.pyplot as plt
 
