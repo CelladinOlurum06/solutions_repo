@@ -44,7 +44,6 @@ We numerically solve the position and velocity over time using:
 
 ## 🧮 Python Simulation: Trajectory of a Payload Released Near Earth
 
-```python
 import numpy as np
 import matplotlib.pyplot as plt
 from scipy.integrate import solve_ivp
