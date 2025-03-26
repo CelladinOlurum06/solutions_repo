@@ -268,8 +268,8 @@ import matplotlib.pyplot as plt</p>
 <h1 id="compute-v1-and-v2-for-each-body">Compute v1 and v2 for each body</h1>
 <p>results = {}
 for body, (mass, radius) in bodies.items():
-    v1 = np.sqrt(G * mass / radius)
-    v2 = np.sqrt(2) * v1
+    v1 = np.sqrt(G * mass / radius)  # v1 = sqrt(GM / R)
+    v2 = np.sqrt(2) * v1             # v2 = sqrt(2) * v1
     results[body] = (v1, v2)</p>
 <h1 id="prepare-data-for-visualization">Prepare data for visualization</h1>
 <p>labels = list(results.keys())
@@ -279,8 +279,8 @@ v2_vals = [results[body][1] for body in labels]</p>
 width = 0.35</p>
 <h1 id="plotting">Plotting</h1>
 <p>plt.figure(figsize=(10, 6))
-plt.bar(x - width/2, v1_vals, width, label='First Cosmic Velocity (v1)')
-plt.bar(x + width/2, v2_vals, width, label='Second Cosmic Velocity (v2)')
+plt.bar(x - width/2, v1_vals, width, label='First Cosmic Velocity (<span class="arithmatex">\(v_1\)</span>)')
+plt.bar(x + width/2, v2_vals, width, label='Second Cosmic Velocity (<span class="arithmatex">\(v_2\)</span>)')
 plt.xticks(x, labels)
 plt.ylabel('Velocity (m/s)')
 plt.title('Cosmic Velocities for Different Celestial Bodies')
