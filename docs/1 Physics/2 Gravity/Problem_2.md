@@ -105,8 +105,8 @@ bodies = {
 # Compute v1 and v2 for each body
 results = {}
 for body, (mass, radius) in bodies.items():
-    v1 = np.sqrt(G * mass / radius)
-    v2 = np.sqrt(2) * v1
+    v1 = np.sqrt(G * mass / radius)  # v1 = sqrt(GM / R)
+    v2 = np.sqrt(2) * v1             # v2 = sqrt(2) * v1
     results[body] = (v1, v2)
 
 # Prepare data for visualization
@@ -119,8 +119,8 @@ width = 0.35
 
 # Plotting
 plt.figure(figsize=(10, 6))
-plt.bar(x - width/2, v1_vals, width, label='First Cosmic Velocity (v1)')
-plt.bar(x + width/2, v2_vals, width, label='Second Cosmic Velocity (v2)')
+plt.bar(x - width/2, v1_vals, width, label='First Cosmic Velocity ($v_1$)')
+plt.bar(x + width/2, v2_vals, width, label='Second Cosmic Velocity ($v_2$)')
 plt.xticks(x, labels)
 plt.ylabel('Velocity (m/s)')
 plt.title('Cosmic Velocities for Different Celestial Bodies')
