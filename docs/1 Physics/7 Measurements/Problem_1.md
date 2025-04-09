@@ -49,23 +49,23 @@ This experiment emphasizes:
 ### Summary Statistics
 
 - Mean time for 10 oscillations:  
-  $$
+  $
   \bar{T}_{10} = \frac{1}{10} \sum T_{10}
-  $$
+  $
 - Mean period:  
-  $$
+  $
   \bar{T} = \frac{\bar{T}_{10}}{10}
-  $$
+  $
 
 - Standard deviation:
-  $$
+  $
   \sigma = \sqrt{\frac{1}{n-1} \sum (T_{10_i} - \bar{T}_{10})^2}
-  $$
+  $
 
 - Uncertainty in the mean:
-  $$
+  $
   \delta \bar{T}_{10} = \frac{\sigma}{\sqrt{n}}, \quad \delta \bar{T} = \frac{\delta \bar{T}_{10}}{10}
-  $$
+  $
 
 ---
 
