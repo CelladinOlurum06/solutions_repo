@@ -49,7 +49,7 @@ This experiment emphasizes:
 ### Summary Statistics
 
 -import numpy as np
-``markdown
+```markdown
 # Ölçülen 10 salınım süreleri (örnek değerler)
 T_10_list = [12.3, 12.5, 12.4, 12.6, 12.3]  # Buraya kendi verilerini gir
 
