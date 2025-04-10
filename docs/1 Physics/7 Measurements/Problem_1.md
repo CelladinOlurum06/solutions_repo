@@ -72,7 +72,7 @@ $$
 
 These results indicate that the measurements are quite consistent.  
 The low standard deviation and uncertainty demonstrate that the data is reliable.
-
+![](8.png)
 ---
 
 ## Calculations
