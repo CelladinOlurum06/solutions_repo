@@ -48,30 +48,27 @@ This experiment emphasizes:
 
 ### Summary Statistics
 
--import numpy as np
-```markdown
-# Ölçülen 10 salınım süreleri (örnek değerler)
-T_10_list = [12.3, 12.5, 12.4, 12.6, 12.3]  # Buraya kendi verilerini gir
+- Mean period:
 
-# Hesaplamalar
-n = len(T_10_list)
-T_10_bar = np.mean(T_10_list)
-T_bar = T_10_bar / 10
-sigma = np.std(T_10_list, ddof=1)
-delta_T_10 = sigma / np.sqrt(n)
-delta_T = delta_T_10 / 10
+$$
+\bar{T} = \frac{1}{n} \sum_{i=1}^{n} T_i = 2.0040\ \text{s}
+$$
 
-# Markdown (LaTeX $$ $$ formatında) çıktısı
-print("### Ölçüm Sonuçları (LaTeX Formatında)\n")
+- Standard deviation:
 
-print(f"$$\\bar{{T}}_{{10}} = {T_10_bar:.4f}\\ \\text{{s}}$$")
-print(f"$$\\bar{{T}} = \\frac{{\\bar{{T}}_{{10}}}}{{10}} = {T_bar:.4f}\\ \\text{{s}}$$")
-print(f"$$\\sigma = {sigma:.4f}\\ \\text{{s}}$$")
-print(f"$$\\delta \\bar{{T}}_{{10}} = \\frac{{\\sigma}}{{\\sqrt{{n}}}} = {delta_T_10:.4f}\\ \\text{{s}}$$")
-print(f"$$\\delta \\bar{{T}} = \\frac{{\\delta \\bar{{T}}_{{10}}}}{{10}} = {delta_T:.4f}\\ \\text{{s}}$$")
-```
+$$
+\sigma = \sqrt{ \frac{1}{n - 1} \sum_{i=1}^{n} (T_i - \bar{T})^2 } = 0.0126\ \text{s}
+$$
 
----
+- Uncertainty in the mean period:
+
+$$
+\delta \bar{T} = \frac{\sigma}{\sqrt{n}} = 0.0040\ \text{s}
+$$
+
+These results indicate that the measurements are quite consistent. The low standard deviation and uncertainty demonstrate that the experimental data is reliable.
+
+
 
 ## Calculations
 

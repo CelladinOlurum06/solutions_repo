@@ -77,3 +77,14 @@ for name, population in distributions.items():
     plt.tight_layout(rect=[0, 0.03, 1, 0.95])
     plt.show()
 ```
+## Observations and Interpretation
+
+- As **sample size increases**, the **distribution of sample means becomes more bell-shaped**, even for highly skewed populations (e.g., exponential).
+- This confirms the **Central Limit Theorem**: regardless of the original population distribution, the sampling distribution of the mean tends toward a **normal distribution**.
+- Additionally, the **spread (standard deviation)** of the sample means **decreases** with larger sample sizes. This matches the theory that:
+
+$$
+\sigma_{\bar{x}} = \frac{\sigma}{\sqrt{n}}
+$$
+
+where \( \sigma_{\bar{x}} \) is the standard deviation of the sample mean.
