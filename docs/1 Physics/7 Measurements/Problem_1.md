@@ -70,6 +70,7 @@ print(f"$$\\sigma = {sigma:.4f}\\ \\text{{s}}$$")
 print(f"$$\\delta \\bar{{T}}_{{10}} = \\frac{{\\sigma}}{{\\sqrt{{n}}}} = {delta_T_10:.4f}\\ \\text{{s}}$$")
 print(f"$$\\delta \\bar{{T}} = \\frac{{\\delta \\bar{{T}}_{{10}}}}{{10}} = {delta_T:.4f}\\ \\text{{s}}$$")
 ```
+
 ---
 
 ## Calculations
