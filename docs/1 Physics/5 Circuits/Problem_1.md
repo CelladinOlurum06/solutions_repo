@@ -119,4 +119,4 @@ def equivalent_resistance(G, source, target):
         if not reduced:
             break
     return G[source][target]['resistance']
-``
+```
