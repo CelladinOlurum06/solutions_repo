@@ -88,3 +88,4 @@ $$
 $$
 
 where \( \sigma_{\bar{x}} \) is the standard deviation of the sample mean.
+![](77.png)
