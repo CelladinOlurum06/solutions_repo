@@ -59,21 +59,8 @@ n = 5000
 pi_val, x, y, inside = estimate_pi_circle(n)
 ```
 
-# Python Visualization
-```python
-def plot_circle_estimation(x, y, inside, n, pi_val):
-    plt.figure(figsize=(6, 6))
-    plt.scatter(x[~inside], y[~inside], s=1, color='red', label='Outside Circle')
-    plt.scatter(x[inside], y[inside], s=1, color='blue', label='Inside Circle')
-    circle = plt.Circle((0, 0), 1, color='black', fill=False)
-    plt.gca().add_artist(circle)
-    plt.title(f"Monte Carlo π Estimation (n={n})\nEstimated π ≈ {pi_val:.5f}")
-    plt.axis("square")
-    plt.legend()
-    plt.show()
-
-plot_circle_estimation(x, y, inside, n, pi_val)
-```
+# Visualization
+![](9.png)
 # Convergence Analysis 
 ```python
 trials = [100, 500, 1000, 5000, 10000, 50000]
