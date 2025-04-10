@@ -16,7 +16,7 @@ This enables us to reduce circuits using **series** and **parallel** rules syste
 ## Theoretical Background
 
 ### Series and Parallel Resistance Rules
-
+![](55.png)
 #### Series Resistors
 
 If two resistors are connected end-to-end:
@@ -42,7 +42,7 @@ $$
    - Detect and reduce **series** nodes (degree = 2).
    - Detect and reduce **parallel** edges (multiple between the same nodes).
 3. **Output**: The resistance between the two terminals (source and target nodes).
-
+![](Unknown.png)
 ---
 
 ## Python Implementation (with NetworkX)
