@@ -260,28 +260,25 @@
 </tbody>
 </table>
 <h3 id="summary-statistics">Summary Statistics</h3>
-<p>-import numpy as np</p>
-<pre><code class="language-markdown"># Ölçülen 10 salınım süreleri (örnek değerler)
-T_10_list = [12.3, 12.5, 12.4, 12.6, 12.3]  # Buraya kendi verilerini gir
-
-# Hesaplamalar
-n = len(T_10_list)
-T_10_bar = np.mean(T_10_list)
-T_bar = T_10_bar / 10
-sigma = np.std(T_10_list, ddof=1)
-delta_T_10 = sigma / np.sqrt(n)
-delta_T = delta_T_10 / 10
-
-# Markdown (LaTeX $$ $$ formatında) çıktısı
-print("### Ölçüm Sonuçları (LaTeX Formatında)\n")
-
-print(f"$$\\bar{{T}}_{{10}} = {T_10_bar:.4f}\\ \\text{{s}}$$")
-print(f"$$\\bar{{T}} = \\frac{{\\bar{{T}}_{{10}}}}{{10}} = {T_bar:.4f}\\ \\text{{s}}$$")
-print(f"$$\\sigma = {sigma:.4f}\\ \\text{{s}}$$")
-print(f"$$\\delta \\bar{{T}}_{{10}} = \\frac{{\\sigma}}{{\\sqrt{{n}}}} = {delta_T_10:.4f}\\ \\text{{s}}$$")
-print(f"$$\\delta \\bar{{T}} = \\frac{{\\delta \\bar{{T}}_{{10}}}}{{10}} = {delta_T:.4f}\\ \\text{{s}}$$")
-</code></pre>
-<hr/>
+<ul>
+<li>Mean period:</li>
+</ul>
+<div class="arithmatex">\[
+\bar{T} = \frac{1}{n} \sum_{i=1}^{n} T_i = 2.0040\ \text{s}
+\]</div>
+<ul>
+<li>Standard deviation:</li>
+</ul>
+<div class="arithmatex">\[
+\sigma = \sqrt{ \frac{1}{n - 1} \sum_{i=1}^{n} (T_i - \bar{T})^2 } = 0.0126\ \text{s}
+\]</div>
+<ul>
+<li>Uncertainty in the mean period:</li>
+</ul>
+<div class="arithmatex">\[
+\delta \bar{T} = \frac{\sigma}{\sqrt{n}} = 0.0040\ \text{s}
+\]</div>
+<p>These results indicate that the measurements are quite consistent. The low standard deviation and uncertainty demonstrate that the experimental data is reliable.</p>
 <h2 id="calculations">Calculations</h2>
 <h3 id="1-gravitational-acceleration">1. Gravitational Acceleration</h3>
 <p>Using the simple pendulum equation:</p>

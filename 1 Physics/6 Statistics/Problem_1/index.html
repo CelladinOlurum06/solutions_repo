@@ -240,6 +240,16 @@ for name, population in distributions.items():
     plt.tight_layout(rect=[0, 0.03, 1, 0.95])
     plt.show()
 </code></pre>
+<h2 id="observations-and-interpretation">Observations and Interpretation</h2>
+<ul>
+<li>As <strong>sample size increases</strong>, the <strong>distribution of sample means becomes more bell-shaped</strong>, even for highly skewed populations (e.g., exponential).</li>
+<li>This confirms the <strong>Central Limit Theorem</strong>: regardless of the original population distribution, the sampling distribution of the mean tends toward a <strong>normal distribution</strong>.</li>
+<li>Additionally, the <strong>spread (standard deviation)</strong> of the sample means <strong>decreases</strong> with larger sample sizes. This matches the theory that:</li>
+</ul>
+<div class="arithmatex">\[
+\sigma_{\bar{x}} = \frac{\sigma}{\sqrt{n}}
+\]</div>
+<p>where <span class="arithmatex">\( \sigma_{\bar{x}} \)</span> is the standard deviation of the sample mean.</p>
 </div>
 </div><footer>
 <div aria-label="Footer Navigation" class="rst-footer-buttons" role="navigation">
