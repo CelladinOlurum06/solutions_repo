@@ -61,6 +61,7 @@ pi_val, x, y, inside = estimate_pi_circle(n)
 
 # Visualization
 ![](9.png)
+
 # Convergence Analysis 
 ```python
 trials = [100, 500, 1000, 5000, 10000, 50000]
