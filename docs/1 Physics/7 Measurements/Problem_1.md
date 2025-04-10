@@ -48,25 +48,28 @@ This experiment emphasizes:
 
 ### Summary Statistics
 
-- Mean time for 10 oscillations:  
-  $
-  \bar{T}_{10} = \frac{1}{10} \sum T_{10}
-  $
-- Mean period:  
-  $
-  \bar{T} = \frac{\bar{T}_{10}}{10}
-  $
+-import numpy as np
+``markdown
+# Ölçülen 10 salınım süreleri (örnek değerler)
+T_10_list = [12.3, 12.5, 12.4, 12.6, 12.3]  # Buraya kendi verilerini gir
 
-- Standard deviation:
-  $
-  \sigma = \sqrt{\frac{1}{n-1} \sum (T_{10_i} - \bar{T}_{10})^2}
-  $
+# Hesaplamalar
+n = len(T_10_list)
+T_10_bar = np.mean(T_10_list)
+T_bar = T_10_bar / 10
+sigma = np.std(T_10_list, ddof=1)
+delta_T_10 = sigma / np.sqrt(n)
+delta_T = delta_T_10 / 10
 
-- Uncertainty in the mean:
-  $
-  \delta \bar{T}_{10} = \frac{\sigma}{\sqrt{n}}, \quad \delta \bar{T} = \frac{\delta \bar{T}_{10}}{10}
-  $
+# Markdown (LaTeX $$ $$ formatında) çıktısı
+print("### Ölçüm Sonuçları (LaTeX Formatında)\n")
 
+print(f"$$\\bar{{T}}_{{10}} = {T_10_bar:.4f}\\ \\text{{s}}$$")
+print(f"$$\\bar{{T}} = \\frac{{\\bar{{T}}_{{10}}}}{{10}} = {T_bar:.4f}\\ \\text{{s}}$$")
+print(f"$$\\sigma = {sigma:.4f}\\ \\text{{s}}$$")
+print(f"$$\\delta \\bar{{T}}_{{10}} = \\frac{{\\sigma}}{{\\sqrt{{n}}}} = {delta_T_10:.4f}\\ \\text{{s}}$$")
+print(f"$$\\delta \\bar{{T}} = \\frac{{\\delta \\bar{{T}}_{{10}}}}{{10}} = {delta_T:.4f}\\ \\text{{s}}$$")
+```
 ---
 
 ## Calculations
