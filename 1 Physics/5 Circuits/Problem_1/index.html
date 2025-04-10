@@ -234,9 +234,9 @@ R_{\text{eq}} = \left( \sum_{i=1}^{n} \frac{1}{R_i} \right)^{-1}
 <hr/>
 <h2 id="python-implementation">Python Implementation</h2>
 <p>We implement the reduction rules in Python using the <code>networkx</code> library.</p>
-<p>```python
-import networkx as nx</p>
-<p>def reduce_series(G, node, source, target):
+<pre><code class="language-python">import networkx as nx
+
+def reduce_series(G, node, source, target):
     if G.degree(node) != 2 or node in [source, target]:
         return False
     neighbors = list(G.neighbors(node))
@@ -245,8 +245,9 @@ import networkx as nx</p>
     R2 = G[v][node]['resistance']
     G.remove_node(node)
     G.add_edge(u, v, resistance=R1 + R2)
-    return True</p>
-<p>def reduce_parallel(G):
+    return True
+
+def reduce_parallel(G):
     reduced = False
     edges = list(G.edges(data=True))
     seen = set()
@@ -254,15 +255,16 @@ import networkx as nx</p>
         key = frozenset({u, v})
         if key in seen:
             continue
-        parallels = [d['resistance'] for <em>, </em>, d in G.edges(u, v, data=True)]
+        parallels = [d['resistance'] for _, _, d in G.edges(u, v, data=True)]
         if len(parallels) &gt; 1:
             R_eq = 1 / sum(1 / r for r in parallels)
             G.remove_edges_from(list(G.edges(u, v)))
             G.add_edge(u, v, resistance=R_eq)
             reduced = True
         seen.add(key)
-    return reduced</p>
-<p>def equivalent_resistance(G, source, target):
+    return reduced
+
+def equivalent_resistance(G, source, target):
     G = G.copy()
     while True:
         reduced = False
@@ -272,7 +274,7 @@ import networkx as nx</p>
         if not reduced:
             break
     return G[source][target]['resistance']
-``</p>
+</code></pre>
 </div>
 </div><footer>
 <div aria-label="Footer Navigation" class="rst-footer-buttons" role="navigation">
