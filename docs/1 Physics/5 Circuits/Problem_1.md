@@ -1,51 +1,82 @@
 # Problem 1
 #  Equivalent Resistance Using Graph Theory
 
+---
+
 ## Motivation
 
-Calculating the equivalent resistance in an electrical circuit is crucial for analyzing and optimizing system performance. Traditional methods become tedious for complex networks, but **graph theory** offers a structured, algorithmic approach.
+Electrical circuits often consist of a complex arrangement of resistors connected in **series**, **parallel**, or even in more complicated **networks with loops** and **branches**. Calculating the **equivalent resistance** between two terminals is a fundamental task in both theoretical and applied physics and electrical engineering.
 
-By modeling circuits as weighted undirected graphs:
-- Nodes represent junctions.
-- Edges represent resistors (weights = resistance in ohms).
+While simple circuits can be reduced manually, **larger or irregular networks** quickly become tedious and error-prone to simplify by hand. This is where **graph theory** comes in.
 
-This enables us to reduce circuits using **series** and **parallel** rules systematically—even in nested or cyclic configurations.
+By representing the circuit as a **weighted undirected graph**, we can approach the problem in a structured and algorithmic way. Using **Python and NetworkX**, we can:
+
+- Model any resistor network
+- Systematically simplify it using graph transformations
+- Visualize each reduction step
+- Compute the final equivalent resistance programmatically
 
 ---
 
 ## Theoretical Background
 
-### Series and Parallel Resistance Rules
-![](55.png)
-#### Series Resistors
+We base our approach on two fundamental rules from circuit analysis:
 
-If two resistors are connected end-to-end:
+---
 
-$$
-R_{eq} = R_1 + R_2
-$$
+### 1. Series Resistance
 
-#### Parallel Resistors
-
-If two resistors connect the same pair of nodes:
+Two resistors connected **end-to-end**, where no other branches exist at the node in between, can be replaced with a single resistor:
 
 $$
-\frac{1}{R_{eq}} = \frac{1}{R_1} + \frac{1}{R_2} + \dots + \frac{1}{R_n}
+R_{\text{eq}} = R_1 + R_2
 $$
+
+> This applies when the node between the two resistors has **degree 2** and is not a source or target.
+
+---
+
+### 2. Parallel Resistance
+
+When multiple resistors connect **the same pair of nodes**, they are in parallel. They can be replaced by a single resistor using:
+
+$$
+\frac{1}{R_{\text{eq}}} = \frac{1}{R_1} + \frac{1}{R_2} + \dots + \frac{1}{R_n}
+$$
+
+Or in code:
+
+$$
+R_{\text{eq}} = \left( \sum_{i=1}^{n} \frac{1}{R_i} \right)^{-1}
+$$
+
+---
+
+These rules are sufficient to reduce any purely resistive network, provided the network is connected and has no dependent elements (like voltage/current sources or reactive components).
 
 ---
 
 ## Algorithm Description
 
-1. **Input**: A weighted, undirected graph with resistance values on edges.
-2. **While** the graph can be simplified:
-   - Detect and reduce **series** nodes (degree = 2).
-   - Detect and reduce **parallel** edges (multiple between the same nodes).
-3. **Output**: The resistance between the two terminals (source and target nodes).
-![](Unknown.png)
+We use a step-by-step simplification strategy:
+
+1. **Input**: A weighted, undirected graph where:
+   - **Nodes** represent junctions
+   - **Edges** represent resistors with a `'resistance'` attribute
+
+2. **Reduction Loop**:
+   - Find nodes (excluding terminals) with **degree 2** → Apply **series rule**
+   - Find **multiple edges** between any pair of nodes → Apply **parallel rule**
+
+3. Continue simplification **until no more changes** are possible.
+
+4. The resulting edge between **source** and **target** contains the equivalent resistance.
+
 ---
 
-## Python Implementation (with NetworkX)
+## Python Implementation
+
+We implement the reduction rules in Python using the `networkx` library.
 
 ```python
 import networkx as nx
@@ -66,17 +97,16 @@ def reduce_parallel(G):
     edges = list(G.edges(data=True))
     seen = set()
     for u, v, data in edges:
-        if (u, v) in seen or (v, u) in seen:
+        key = frozenset({u, v})
+        if key in seen:
             continue
-        parallels = [
-            d['resistance'] for _, _, d in G.edges(u, v, data=True)
-        ]
+        parallels = [d['resistance'] for _, _, d in G.edges(u, v, data=True)]
         if len(parallels) > 1:
             R_eq = 1 / sum(1 / r for r in parallels)
             G.remove_edges_from(list(G.edges(u, v)))
             G.add_edge(u, v, resistance=R_eq)
             reduced = True
-        seen.add((u, v))
+        seen.add(key)
     return reduced
 
 def equivalent_resistance(G, source, target):
@@ -89,4 +119,4 @@ def equivalent_resistance(G, source, target):
         if not reduced:
             break
     return G[source][target]['resistance']
-```
+``
