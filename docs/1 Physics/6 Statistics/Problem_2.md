@@ -171,3 +171,4 @@ N = 10000
 pi_est, crosses = buffon_needle_simulation(N)
 print(f"Estimated π with {N} trials: {pi_est}")
 ```
+![](indir.png)
