@@ -76,3 +76,98 @@ plt.legend()
 plt.grid(True)
 plt.show()
 ```
+
+# Estimating π Using Buffon's Needle Method
+
+## 1. Theoretical Foundation
+
+### 1.1 What is Buffon’s Needle Problem?
+
+Buffon’s Needle is one of the earliest problems in geometric probability, proposed by the French mathematician Georges-Louis Leclerc, Comte de Buffon in the 18th century. The problem asks:
+
+> If you drop a needle of length *L* onto a floor that has parallel lines spaced a distance *D* apart (*L ≤ D*), what is the probability that the needle crosses one of the lines?
+
+Surprisingly, this probability is related to π.
+
+### 1.2 Deriving the Formula
+
+Let:
+- *L* be the length of the needle
+- *D* be the distance between the parallel lines (with *L ≤ D*)
+- *θ* be the acute angle between the needle and the lines (0 ≤ θ ≤ π/2)
+- *x* be the distance from the center of the needle to the nearest line (0 ≤ x ≤ D/2)
+
+A needle will cross a line if:
+
+\[
+x \leq \frac{L}{2} \sin(\theta)
+\]
+
+To find the probability \( P \), we integrate over all possible positions and orientations of the needle:
+
+\[
+P = \frac{2L}{\pi D}
+\]
+
+Solving for π gives:
+
+\[
+\pi \approx \frac{2L \cdot N}{D \cdot C}
+\]
+
+Where:
+- *N* is the total number of needle drops
+- *C* is the number of times the needle crosses a line
+
+---
+
+## 2. Simulation
+
+### 2.1 Method
+
+1. Randomly choose a center point of the needle between 0 and *D/2* (since the problem is symmetric).
+2. Randomly generate an angle θ between 0 and π/2.
+3. Check if the needle crosses a line using:
+
+\[
+x \leq \frac{L}{2} \sin(\theta)
+\]
+
+4. Count how many times this condition is satisfied.
+5. Estimate π using:
+
+\[
+\pi \approx \frac{2L \cdot N}{D \cdot C}
+\]
+
+---
+
+## 3. Python Implementation
+
+```python
+import numpy as np
+import matplotlib.pyplot as plt
+
+def buffon_needle_simulation(N, L=1.0, D=2.0):
+    assert L <= D, "Needle length must be less than or equal to line spacing"
+    
+    # Random needle center distances from nearest line
+    x = np.random.uniform(0, D / 2, N)
+    # Random angles between 0 and π/2
+    theta = np.random.uniform(0, np.pi / 2, N)
+    
+    # Check if the needle crosses a line
+    crosses = x <= (L / 2) * np.sin(theta)
+    C = np.count_nonzero(crosses)
+    
+    if C == 0:
+        return np.nan  # Avoid division by zero
+    else:
+        pi_estimate = (2 * L * N) / (D * C)
+        return pi_estimate, crosses
+
+# Example usage
+N = 10000
+pi_est, crosses = buffon_needle_simulation(N)
+print(f"Estimated π with {N} trials: {pi_est}")
+```
