@@ -122,7 +122,7 @@ def equivalent_resistance(G, source, target):
 ```
 ## Plot
 
-![](indir(1).png)
+![](6.png)
 ```python
 import networkx as nx
 import matplotlib.pyplot as plt
