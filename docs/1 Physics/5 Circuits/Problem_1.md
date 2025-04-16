@@ -120,9 +120,11 @@ def equivalent_resistance(G, source, target):
             break
     return G[source][target]['resistance']
 ```
-## Plot
+
 
 ![](6.png)
+
+### Python Code for the Plot
 ```python
 import networkx as nx
 import matplotlib.pyplot as plt
