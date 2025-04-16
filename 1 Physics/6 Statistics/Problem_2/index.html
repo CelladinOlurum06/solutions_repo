@@ -236,6 +236,81 @@ plt.legend()
 plt.grid(True)
 plt.show()
 </code></pre>
+<h1 id="estimating-using-buffons-needle-method">Estimating π Using Buffon's Needle Method</h1>
+<h2 id="1-theoretical-foundation_1">1. Theoretical Foundation</h2>
+<h3 id="11-what-is-buffons-needle-problem">1.1 What is Buffon’s Needle Problem?</h3>
+<p>Buffon’s Needle is one of the earliest problems in geometric probability, proposed by the French mathematician Georges-Louis Leclerc, Comte de Buffon in the 18th century. The problem asks:</p>
+<blockquote>
+<p>If you drop a needle of length <em>L</em> onto a floor that has parallel lines spaced a distance <em>D</em> apart (<em>L ≤ D</em>), what is the probability that the needle crosses one of the lines?</p>
+</blockquote>
+<p>Surprisingly, this probability is related to π.</p>
+<h3 id="12-deriving-the-formula">1.2 Deriving the Formula</h3>
+<p>Let:
+- <em>L</em> be the length of the needle
+- <em>D</em> be the distance between the parallel lines (with <em>L ≤ D</em>)
+- <em>θ</em> be the acute angle between the needle and the lines (0 ≤ θ ≤ π/2)
+- <em>x</em> be the distance from the center of the needle to the nearest line (0 ≤ x ≤ D/2)</p>
+<p>A needle will cross a line if:</p>
+<div class="arithmatex">\[
+x \leq \frac{L}{2} \sin(\theta)
+\]</div>
+<p>To find the probability <span class="arithmatex">\( P \)</span>, we integrate over all possible positions and orientations of the needle:</p>
+<div class="arithmatex">\[
+P = \frac{2L}{\pi D}
+\]</div>
+<p>Solving for π gives:</p>
+<div class="arithmatex">\[
+\pi \approx \frac{2L \cdot N}{D \cdot C}
+\]</div>
+<p>Where:
+- <em>N</em> is the total number of needle drops
+- <em>C</em> is the number of times the needle crosses a line</p>
+<hr/>
+<h2 id="2-simulation">2. Simulation</h2>
+<h3 id="21-method">2.1 Method</h3>
+<ol>
+<li>Randomly choose a center point of the needle between 0 and <em>D/2</em> (since the problem is symmetric).</li>
+<li>Randomly generate an angle θ between 0 and π/2.</li>
+<li>Check if the needle crosses a line using:</li>
+</ol>
+<div class="arithmatex">\[
+x \leq \frac{L}{2} \sin(\theta)
+\]</div>
+<ol>
+<li>Count how many times this condition is satisfied.</li>
+<li>Estimate π using:</li>
+</ol>
+<div class="arithmatex">\[
+\pi \approx \frac{2L \cdot N}{D \cdot C}
+\]</div>
+<hr/>
+<h2 id="3-python-implementation">3. Python Implementation</h2>
+<pre><code class="language-python">import numpy as np
+import matplotlib.pyplot as plt
+
+def buffon_needle_simulation(N, L=1.0, D=2.0):
+    assert L &lt;= D, "Needle length must be less than or equal to line spacing"
+
+    # Random needle center distances from nearest line
+    x = np.random.uniform(0, D / 2, N)
+    # Random angles between 0 and π/2
+    theta = np.random.uniform(0, np.pi / 2, N)
+
+    # Check if the needle crosses a line
+    crosses = x &lt;= (L / 2) * np.sin(theta)
+    C = np.count_nonzero(crosses)
+
+    if C == 0:
+        return np.nan  # Avoid division by zero
+    else:
+        pi_estimate = (2 * L * N) / (D * C)
+        return pi_estimate, crosses
+
+# Example usage
+N = 10000
+pi_est, crosses = buffon_needle_simulation(N)
+print(f"Estimated π with {N} trials: {pi_est}")
+</code></pre>
 </div>
 </div><footer>
 <div aria-label="Footer Navigation" class="rst-footer-buttons" role="navigation">
